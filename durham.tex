@@ -1,0 +1,99 @@
+\documentclass[xcolor=dvipsnames,usepdftitle=false]{beamer} 
+%\usecolortheme[named=BlueViolet]{structure} 
+\usecolortheme[RGB={83,13,88}]{structure} \usetheme[height=7mm]{Boadilla} 
+\setbeamertemplate{items}[ball] 
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols 
+
+\usefonttheme[onlylarge]{structuresmallcapsserif}
+\usefonttheme{professionalfonts}
+
+% Normal usepackage includes
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{amsthm}
+\usepackage{amsopn}
+\usepackage{subfigure}
+\usepackage{fancybox}
+\usepackage{mathtools}
+%Set up command for logo in top right corner
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+\newcommand{\MyLogo}{%
+	\begin{textblock}{14}(119.0,1.0) %logo position
+		\includegraphics[width=0.8cm]{pictures/logo_only.eps}
+	\end{textblock}
+}
+
+% This puts in a section ``title slide'' when \section command
+% is encountered.  Can easily be changed to subsection
+\AtBeginSection{
+\begin{frame}
+		\MyLogo
+\begin{center}
+		\structure{\Large \insertsection}
+	\end{center}
+\end{frame}
+}
+
+%Use some script greek letters
+\renewcommand\epsilon{\varepsilon}
+\renewcommand\phi{\varphi}
+\renewcommand\theta{\vartheta}
+
+\begin{document}
+
+\title{Durham University Beamer Template}
+\author{}
+\institute{Durham University}
+\date{}
+
+\begin{frame}[plane]
+
+\titlepage
+
+\end{frame}
+
+\section{Maths Crap}
+
+\begin{frame}
+
+\frametitle{Some Maths Here}
+
+The Crank-Nicolson scheme is
+\begin{equation} \label{crank}
+	U^{n+1}_{j} - U^{n}_{j} = \frac{\mu}{2} \left(U^{n+1}_{j+1} - 2U^{n+1}_j + U^{n+1}_{j-1} + U^n_{j+1} - 2U^n_j + U^{n}_{j-1}\right)
+\end{equation}
+or as a matrix equation
+\begin{equation}
+	\mathbf{A} U^{n+1} = \mathbf{B} U^n
+\end{equation}
+\end{frame}
+\begin{frame}
+Where $\mathbf{A}$ and $\mathbf{B}$ are
+\[
+A =\begin{pmatrix}
+1-\mu & - \frac{\mu}{2} & 0 & \cdots & 0 \\
+- \frac{\mu}{2} & 1-\mu & - \frac{\mu}{2} & \ddots & \vdots \\
+0 & -\frac{\mu}{2} & 1-\mu & \ddots & 0 \\
+\vdots & \ddots & \ddots & \ddots & -\frac{\mu}{2} \\
+0 & \cdots & 0 & - \frac{\mu}{2} & 1-\mu
+\end{pmatrix}
+\]
+and
+\[
+B =\begin{pmatrix}
+1+\mu & \frac{\mu}{2} & 0 & \cdots & 0 \\
+\frac{\mu}{2} & 1+\mu & \frac{\mu}{2} & \ddots & \vdots \\
+0 & \frac{\mu}{2} & 1+\mu & \ddots & 0 \\
+\vdots & \ddots & \ddots & \ddots & \frac{\mu}{2} \\
+0 & \cdots & 0 & \frac{\mu}{2} & 1+\mu
+\end{pmatrix}
+\]
+
+\end{frame}
+
+\end{document}
